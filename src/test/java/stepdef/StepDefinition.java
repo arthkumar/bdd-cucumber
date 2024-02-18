@@ -12,9 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class Stepdef {
+public class StepDefinition {
 
-    final String BASE_URL = "https://the-internet.herokuapp.com";
     private WebDriver driver;
     private Actions actions;
 
@@ -31,12 +30,13 @@ public class Stepdef {
 
     @Given("the user visits {string}")
     public void the_user_visits(String endpoint) {
+        String BASE_URL = "https://the-internet.herokuapp.com";
         driver.get(BASE_URL.concat(endpoint));
     }
 
     @When("the user hover over the {string} image")
     public void the_user_hover_over_the_image(String id) {
-        WebElement element = driver.findElement(By.xpath("(//img[@alt='User Avatar'])["+id+"]"));
+        WebElement element = driver.findElement(By.xpath("(//img[@alt='User Avatar'])[" + id + "]"));
         actions.moveToElement(element).build().perform();
     }
 
